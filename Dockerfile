@@ -10,6 +10,7 @@ COPY ncloud /ncloud
 COPY exporter /exporter
 COPY config /config
 COPY main.py .
+COPY common.py .
 COPY config.yaml .
 
 ENV ENV=PRD
