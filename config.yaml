@@ -1,0 +1,96 @@
+default:
+  log_level: "INFO"
+  max_retry: 10
+
+  api_urls:
+    api: "https://ncloud.apigw.ntruss.com"
+    ci: "https://cw.apigw.ntruss.com"
+    verification: "https://verify-your-client.apigw.ntruss.com"
+    billing: "https://billingapi.apigw.ntruss.com"
+    resource: "https://resourcemanager.apigw.ntruss.com"
+  
+  resource_types:
+    Server:
+      key: "460438474722512896"
+      service: "ncloud.services.server.ServerService"
+      method: "get_server_instance_list"
+      json_key: "getServerInstanceListResponse.serverInstanceList"
+      id_key: "serverInstanceNo"
+      name_key: "serverName"
+      metric_list:
+        - avg_cpu_used_rto
+        - avg_read_byt_cnt
+        - avg_write_byt_cnt
+        - avg_read_cnt
+        - avg_write_cnt
+        - fs_all_mb
+        - fs_used_mb
+        - avg_fs_usert
+        - avg_snd_bps
+        - avg_rcv_bps
+        - avg_snd_pps
+        - avg_rcv_pps
+        - avg_snd_fail_packt_cnt
+        - avg_rcv_fail_packt_cnt
+        # - proc_mem_usert
+        # - proc_cnt
+        - run_que_len
+        - mem_mb
+        - free_mem_mb
+        - mem_usert
+        - pgin_mb
+        - pgout_mb
+
+    LoadBalancer:
+      key: "460438727509020672"
+      service: "ncloud.services.loadbalancer.LoadBalancerService"
+      method: "get_load_balancer_list"
+      json_key: "getLoadBalancerInstanceListResponse.loadBalancerInstanceList"
+      id_key: "loadBalancerInstanceNo"
+      name_key: "loadBalancerName"
+      metric_list:
+        - "connections_per_second"
+        - "concurrent_session"
+        - "traffic_in_byte"
+        - "traffic_out_byte"
+
+    Redis:
+      key: "480801732390162432"
+      service: "ncloud.services.redis.RedisService"
+      method: "get_cloud_redis_instance_list"
+      json_key: "getCloudRedisInstanceListResponse.cloudRedisInstanceList"
+      id_key: "cloudRedisInstanceNo"
+      name_key: "cloudRedisServiceName"
+      sub_instance_list: "cloudRedisServerInstanceList"
+      sub_id_key: "cloudRedisServerInstanceNo"
+      sub_name_key: "cloudRedisServerName"
+      metric_list:
+        - "cpu_user"
+        - "cpu_nice"
+        - "cpu_sys"
+        - "cpu_iowait"
+        - "cpu_idle"
+        - "mem_used"
+        - "mem_free"
+        - "mem_pct"
+        - "redis_connected_clients"
+        - "redis_keyspace_hits"
+        - "redis_keyspace_misses"
+
+    Nas:
+      key: "665289997397659648"
+      service: "ncloud.services.nas.NasService"
+      method: "get_nas_volume_instance_list"
+      json_key: "getNasVolumeInstanceListResponse.nasVolumeInstanceList"
+      id_key: "nasVolumeInstanceNo"
+      name_key: "volumeName"
+      metric_list:
+        - "volume_size"
+        - "volume_used_size"
+        - "volume_used_ratio"
+
+environments:
+  DEV:
+    log_level: "INFO"
+  PRD:
+    log_level: "INFO"
