@@ -44,7 +44,7 @@ default:
     LoadBalancer:
       key: "460438727509020672"
       service: "ncloud.services.loadbalancer.LoadBalancerService"
-      method: "get_load_balancer_list"
+      method: "get_load_balancer_instance_list"
       json_key: "getLoadBalancerInstanceListResponse.loadBalancerInstanceList"
       id_key: "loadBalancerInstanceNo"
       name_key: "loadBalancerName"
