@@ -50,6 +50,8 @@ kube-deploy:
     - git push origin HEAD:main
   rules:
     - if: $CI_COMMIT_BRANCH == "main" 
+
+
  
 
  
